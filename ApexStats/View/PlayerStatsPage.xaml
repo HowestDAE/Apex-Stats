@@ -30,28 +30,39 @@
             <ColumnDefinition Width="4.0*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- BACKGROUND IMAGE -->
-        <Image Grid.ColumnSpan="3" Grid.RowSpan="8" 
-            Source="/Resources/Images/BG.jpg" Stretch="UniformToFill"/>
+        <!-- RESOURCES -->
+        <Grid.Resources>
+            <SolidColorBrush x:Key="BackgroundPrimary" Color="#313443"/>
+            <SolidColorBrush x:Key="BackgroundSecondary" Color="#363848"/>
+            <SolidColorBrush x:Key="TextSeperator" Color="#b33834"/>
+            <SolidColorBrush x:Key="TextPrimary" Color="White"/>
+            <SolidColorBrush x:Key="TextSecondary" Color="#8f94a5"/>
+        </Grid.Resources>
+        
+        <!-- BACKGROUND -->
+        <Border Grid.ColumnSpan="2" Grid.Row="0" 
+            Background="{StaticResource BackgroundPrimary}"/>
 
-        <!-- USER ICON -->
-        <StackPanel Orientation="Horizontal">
+        <Border Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="7" 
+            Background="{StaticResource BackgroundSecondary}"/>
+
+        <!-- USER ICON AND RANK-->
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <Viewbox>
-            <Ellipse Width="75" Height="75" Margin="10">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="{Binding PlayerStatistics.PlatformInfo.AvatarURL}"/>
-                </Ellipse.Fill>
-            </Ellipse>
+                <Ellipse Width="80" Height="80" Margin="10">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{Binding PlayerStatistics.PlatformInfo.AvatarURL}"/>
+                    </Ellipse.Fill>
+                </Ellipse>
             </Viewbox>
-
-            <Image Source="{Binding PlayerSegment.Statistics[peakRankScore].Metadata.IconURL}"/>
+            <Image Source="{Binding PlayerSegment.Statistics[rankScore].Metadata.IconURL}"/>
         </StackPanel>
 
         <!-- USER STATS -->
         <Grid Grid.Column="1" Grid.Row="0">
             <!-- COLS -->
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="3.0*"/>
+                <ColumnDefinition Width="2.5*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
@@ -60,7 +71,7 @@
             <!-- ROWS -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="4*"/>
-                <RowDefinition Height="0.2*"/>
+                <RowDefinition Height="0.1*"/>
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
@@ -68,115 +79,103 @@
             <Viewbox Grid.Column="0" Grid.Row="0"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,20,0">
                 <TextBlock Text="{Binding PlayerStatistics.PlatformInfo.UserName, FallbackValue=Username}"
-                    Foreground="White" FontFamily="Segoe UI Variable Text" FontWeight="Bold" />
+                    Foreground="{StaticResource TextPrimary}" FontFamily="Segoe UI Variable Text" FontWeight="Bold" />
             </Viewbox>
 
             <Border Grid.Column="0" Grid.Row="1" Margin="0,0,15,0"
-                    Background="IndianRed"/>
+                    Background="{StaticResource TextSeperator}"/>
             
             <Viewbox Grid.Column="0" Grid.Row="2" 
                      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4">
-                <TextBlock Text="Username" Foreground="Gray" FontFamily="Segoe UI Variable Text Semilight"/>
+                <TextBlock Text="Username" Foreground="{StaticResource TextSecondary}" FontFamily="Segoe UI Variable Text Semilight"/>
             </Viewbox>
 
             <!-- LEVEL -->
             <Viewbox Grid.Column="1" Grid.Row="0"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,20,0" >
                 <TextBlock Text="{Binding PlayerSegment.Statistics[level].DisplayValue, FallbackValue=420}"
-                    Foreground="White" FontFamily="Segoe UI Variable Text" FontWeight="Bold"/>
+                    Foreground="{StaticResource TextPrimary}" FontFamily="Segoe UI Variable Text" FontWeight="Bold"/>
             </Viewbox>
 
             <Border Grid.Column="1" Grid.Row="1" Margin="0,0,15,0"
-                    Background="IndianRed"/>
+                    Background="{StaticResource TextSeperator}"/>
 
             <Viewbox Grid.Column="1" Grid.Row="2"
                      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4">
-                <TextBlock Text="Level" Foreground="Gray" FontFamily="Segoe UI Variable Text Semilight" />
+                <TextBlock Text="Level" Foreground="{StaticResource TextSecondary}" FontFamily="Segoe UI Variable Text Semilight" />
             </Viewbox>
 
             <!-- WINS -->
             <Viewbox Grid.Column="2" Grid.Row="0"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,20,0" >
                 <TextBlock Text="{Binding PlayerSegment.Statistics[wins].DisplayValue, FallbackValue=420}"
-                    Foreground="White" FontFamily="Segoe UI Variable Text" FontWeight="Bold"/>
+                    Foreground="{StaticResource TextPrimary}" FontFamily="Segoe UI Variable Text" FontWeight="Bold"/>
             </Viewbox>
 
             <Border Grid.Column="2" Grid.Row="1" Margin="0,0,15,0"
-                    Background="IndianRed"/>
+                    Background="{StaticResource TextSeperator}"/>
 
             <Viewbox Grid.Column="2" Grid.Row="2"
                      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4">
-                <TextBlock Text="Wins" Foreground="Gray" FontFamily="Segoe UI Variable Text Semilight" />
+                <TextBlock Text="Wins" Foreground="{StaticResource TextSecondary}" FontFamily="Segoe UI Variable Text Semilight" />
             </Viewbox>
 
             <!-- KILLS -->
             <Viewbox Grid.Column="3" Grid.Row="0"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,20,0" >
                 <TextBlock Text="{Binding PlayerSegment.Statistics[kills].DisplayValue, FallbackValue=420}"
-                    Foreground="White" FontFamily="Segoe UI Variable Text" FontWeight="Bold"/>
+                    Foreground="{StaticResource TextPrimary}" FontFamily="Segoe UI Variable Text" FontWeight="Bold"/>
             </Viewbox>
 
-            <Border  Grid.Column="3" Grid.Row="1" Margin="0,0,15,0"
-                    Background="IndianRed"/>
+            <Border Grid.Column="3" Grid.Row="1" Margin="0,0,15,0"
+                    Background="{StaticResource TextSeperator}"/>
 
             <Viewbox Grid.Column="3" Grid.Row="2"
                      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4">
-                <TextBlock Text="Kills" Foreground="Gray" FontFamily="Segoe UI Variable Text Semilight" />
+                <TextBlock Text="Kills" Foreground="{StaticResource TextSecondary}" FontFamily="Segoe UI Variable Text Semilight" />
             </Viewbox>
 
             <!-- TOTAL DAMAGE -->
             <Viewbox Grid.Column="4" Grid.Row="0"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,20,0" >
                 <TextBlock Text="{Binding PlayerSegment.Statistics[damage].DisplayValue, FallbackValue=420}"
-                    Foreground="White" FontFamily="Segoe UI Variable Text" FontWeight="Bold"/>
+                    Foreground="{StaticResource TextPrimary}" FontFamily="Segoe UI Variable Text" FontWeight="Bold"/>
             </Viewbox>
 
-            <Border  Grid.Column="4" Grid.Row="1" Margin="0,0,15,0"
-                    Background="IndianRed"/>
+            <Border Grid.Column="4" Grid.Row="1" Margin="0,0,15,0"
+                    Background="{StaticResource TextSeperator}"/>
 
             <Viewbox Grid.Column="4" Grid.Row="2"
                      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4">
-                <TextBlock Text="Total Damage" Foreground="Gray" FontFamily="Segoe UI Variable Text Semilight" />
+                <TextBlock Text="Total Damage" Foreground="{StaticResource TextSecondary}" FontFamily="Segoe UI Variable Text Semilight" />
             </Viewbox>
         </Grid>
         
         <!-- SEPERATOR -->
-        <Border Grid.ColumnSpan="2" Grid.Row="1" Background="LightGray"/>
+        <Border Grid.ColumnSpan="2" Grid.Row="1" Background="#434355"/>
 
         <!-- FIRST LEGEND -->
-        <Viewbox Grid.ColumnSpan="2" Grid.Row="2" Stretch="UniformToFill">
-            <Image Source="{Binding LegendSegments[0].Metadata.BgImageURL}"/>
-        </Viewbox>
-
         <Viewbox Grid.Column="0" Grid.Row="2" Stretch="UniformToFill">
             <Image Source="{Binding LegendSegments[0].Metadata.PortraitImageURL}"/>
         </Viewbox>
 
         <!-- SEPERATOR -->
-        <Border Grid.ColumnSpan="2" Grid.Row="3" Background="LightGray"/>
+        <Border Grid.ColumnSpan="2" Grid.Row="3" Background="#434355"/>
         
         <!-- SECOND LEGEND -->
-        <Viewbox Grid.ColumnSpan="2" Grid.Row="4" Stretch="UniformToFill">
-            <Image Source="{Binding LegendSegments[1].Metadata.BgImageURL}"/>
-        </Viewbox>
-
         <Viewbox Grid.Column="0" Grid.Row="4" Stretch="UniformToFill">
             <Image Source="{Binding LegendSegments[1].Metadata.PortraitImageURL}"/>
         </Viewbox>
 
         <!-- SEPERATOR -->
-        <Border Grid.ColumnSpan="2" Grid.Row="5" Background="LightGray"/>
+        <Border Grid.ColumnSpan="2" Grid.Row="5" Background="#434355"/>
 
         <!-- THIRD LEGEND -->
-        <Viewbox Grid.ColumnSpan="2" Grid.Row="6" Stretch="UniformToFill">
-            <Image Source="{Binding LegendSegments[2].Metadata.BgImageURL}"/>
-        </Viewbox>
-
         <Viewbox Grid.Column="0" Grid.Row="6" Stretch="UniformToFill">
             <Image Source="{Binding LegendSegments[2].Metadata.PortraitImageURL}"/>
         </Viewbox>
 
         <!-- SEPERATOR -->
-        <Border Grid.ColumnSpan="2" Grid.Row="7" Background="LightGray"/>
+        <Border Grid.ColumnSpan="2" Grid.Row="7" Background="#434355"/>
     </Grid>
 </Page>
