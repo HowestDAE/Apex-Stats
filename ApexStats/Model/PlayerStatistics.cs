@@ -7,11 +7,11 @@ namespace ApexStats.Model
     internal class PlayerStatistics
     {
         [JsonProperty(PropertyName = "platformInfo")]
-        PlatformInfo PlatformInfo { get; set; }
+        public PlatformInfo PlatformInfo { get; set; }
         [JsonProperty(PropertyName = "metadata")]
-        Metadata Metadata { get; set; }
+        public Metadata Metadata { get; set; }
         [JsonProperty(PropertyName = "segments")]
-        List<Segment> Segments { get; set; }
+        public List<Segment> Segments { get; set; }
     }
 
     public class PlatformInfo

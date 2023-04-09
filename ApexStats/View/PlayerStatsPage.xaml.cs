@@ -1,12 +1,6 @@
-﻿using ApexStats.Model;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json.Serialization;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -19,16 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace ApexStats
+namespace ApexStats.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for PlayerStatsPage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class PlayerStatsPage : Page
     {
-        public MainWindow()
+        public PlayerStatsPage()
         {
-            InitializeComponent(); 
+            InitializeComponent();
         }
     }
 }

@@ -1,0 +1,26 @@
+{
+  "current": {
+    "start": 1680879600,
+    "end": 1680883200,
+    "readableDate_start": "2023-04-07 15:00:00",
+    "readableDate_end": "2023-04-07 16:00:00",
+    "map": "Storm Point",
+    "code": "storm_point_rotation",
+    "DurationInSecs": 3600,
+    "DurationInMinutes": 60,
+    "asset": "https:\/\/apexlegendsstatus.com\/assets\/maps\/Storm_Point.png",
+    "remainingSecs": 2785,
+    "remainingMins": 46,
+    "remainingTimer": "00:46:25"
+  },
+  "next": {
+    "start": 1680883200,
+    "end": 1680886800,
+    "readableDate_start": "2023-04-07 16:00:00",
+    "readableDate_end": "2023-04-07 17:00:00",
+    "map": "Broken Moon",
+    "code": "broken_moon_rotation",
+    "DurationInSecs": 3600,
+    "DurationInMinutes": 60
+  }
+}
