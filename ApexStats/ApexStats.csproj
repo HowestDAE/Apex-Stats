@@ -90,6 +90,7 @@
     <Compile Include="Repositories\LocalPlayerStatsRepository.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="ViewModel\PlayerStatsVM.cs" />
+    <Compile Include="View\Converters\PercentileToStringConverter.cs" />
     <Compile Include="View\PlayerStatsPage.xaml.cs">
       <DependentUpon>PlayerStatsPage.xaml</DependentUpon>
     </Compile>

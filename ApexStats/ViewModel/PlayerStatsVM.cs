@@ -32,9 +32,6 @@ namespace ApexStats.ViewModel
             set => SetProperty(ref _playerSegment, value);
         }
 
-        public string AcountNameLevel => $"{_playerStatistics.PlatformInfo.UserName} lv. [{_playerSegment.Statistics["level"].DisplayValue}]";
-        //public string AcountLevel => $"level [{_playerSegment.Statistics["level"].DisplayValue}]";
-
         private List<Segment> _legendSegments = new List<Segment>();
         public List<Segment> LegendSegments
         {
@@ -73,7 +70,7 @@ namespace ApexStats.ViewModel
             foreach (var segment in _playerStatistics.Segments)
             {
                 // Segment is a legend with 3 or more statistics
-                if (segment.Type == "legend" && segment.Statistics.Count >= 3)
+                if (segment.Type == "legend" && segment.Statistics.Count >= 1)
                     _legendSegments.Add(segment);
             }
         }

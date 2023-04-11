@@ -5,30 +5,28 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:ApexStats.View"
       xmlns:vm="clr-namespace:ApexStats.ViewModel"
+      xmlns:cv="clr-namespace:ApexStats.View.Converters"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="PlayerStatsPage">
     <Page.DataContext>
         <vm:PlayerStatsVM/>
     </Page.DataContext>
+
+    <Page.Resources>
+        <cv:PercentileToStringConverter x:Key="PercentileConverter"/>
+    </Page.Resources>
     <Grid>
-        
+
         <!-- COLS -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0.75*"/>
-            <ColumnDefinition Width="4.0*"/>
+            <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
         <!-- ROWS -->
         <Grid.RowDefinitions>
-            <RowDefinition Height="1.*"/>
-            <RowDefinition Height="0.03*"/>
-            <RowDefinition Height="2.0*"/>
-            <RowDefinition Height="0.03*"/>
-            <RowDefinition Height="2.0*"/>
-            <RowDefinition Height="0.03*"/>
-            <RowDefinition Height="2.0*"/>
-            <RowDefinition Height="0.03*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
 
         <!-- RESOURCES -->
@@ -36,6 +34,9 @@
             <SolidColorBrush x:Key="BackgroundPrimary" Color="#313443"/>
             <SolidColorBrush x:Key="BackgroundSecondary" Color="#363848"/>
             <SolidColorBrush x:Key="DarkPrimary" Color="#21212a"/>
+            <SolidColorBrush x:Key="DarkSecondary" Color="#434355"/>
+            
+            
             <SolidColorBrush x:Key="TextSeperator" Color="#b33834"/>
             <SolidColorBrush x:Key="TextPrimary" Color="White"/>
             <SolidColorBrush x:Key="TextSecondary" Color="#8f94a5"/>
@@ -43,51 +44,36 @@
             <Style x:Key="PrimaryTextStyle" TargetType="TextBlock">
                 <Setter Property="Foreground" Value="{StaticResource TextPrimary}" />
                 <Setter Property="FontSize" Value="24" />
-                <Setter Property="FontFamily" Value="Segoe UI Variable Text"/>
-                <Setter Property="FontWeight" Value="Bold"/>
+                <Setter Property="FontFamily" Value="Bahnschrift SemiBold Condensed"/>
             </Style>
 
             <Style x:Key="SecondaryTextStyle" TargetType="TextBlock">
                 <Setter Property="Foreground" Value="{StaticResource TextSecondary}" />
                 <Setter Property="FontSize" Value="12" />
-                <Setter Property="FontFamily" Value="Segoe UI Variable Text SemiLight"/>
+                <Setter Property="FontFamily" Value="Bahnschrift SemiLight Condensed"/>
             </Style>
         </Grid.Resources>
-        
+
         <!-- BACKGROUNDS -->
         <Border Grid.ColumnSpan="2" Grid.Row="0" 
             Background="{StaticResource BackgroundPrimary}"/>
 
-        <Border Grid.Column="0" Grid.Row="0"
-            Background="{StaticResource DarkPrimary}"/>
-
         <Border Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="7" 
             Background="{StaticResource BackgroundSecondary}"/>
-
-        <!-- USER ICON AND RANK-->
-        <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Viewbox>
-                <Ellipse Width="80" Height="80" Margin="10">
-                    <Ellipse.Fill>
-                        <ImageBrush ImageSource="{Binding PlayerStatistics.PlatformInfo.AvatarURL}"/>
-                    </Ellipse.Fill>
-                </Ellipse>
-            </Viewbox>
-            <Image Source="{Binding PlayerSegment.Statistics[rankScore].Metadata.IconURL}"/>
-        </StackPanel>
 
         <!-- USER STATS -->
         <Grid Grid.Column="1" Grid.Row="0" Margin="10,0,0,0">
 
             <!-- COLS -->
             <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="2.5*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            
+
             <!-- ROWS -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="4*"/>
@@ -95,42 +81,38 @@
                 <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
+            <!-- USER ICON AND RANK-->
+            <StackPanel Grid.RowSpan="3" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
+                <Viewbox>
+                    <Ellipse Width="80" Height="80" Margin="10">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding PlayerStatistics.PlatformInfo.AvatarURL}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Viewbox>
+                <Image Source="{Binding PlayerSegment.Statistics[rankScore].Metadata.IconURL}"/>
+            </StackPanel>
+
             <!-- USERNAME -->
-            <Viewbox Grid.Column="0" Grid.Row="0"
+            <Viewbox Grid.Column="1" Grid.Row="0"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,20,0">
                 <TextBlock Text="{Binding PlayerStatistics.PlatformInfo.UserName, FallbackValue=Username}"
                     Style="{StaticResource PrimaryTextStyle}" />
             </Viewbox>
 
-            <Border Grid.Column="0" Grid.Row="1" Margin="0,0,15,0" MaxHeight="2"
+            <Border Grid.Column="1" Grid.Row="1" Margin="0,0,15,0" MaxHeight="2"
                     Background="{StaticResource TextSeperator}"/>
-            
-            <Viewbox Grid.Column="0" Grid.Row="2" 
+
+            <Viewbox Grid.Column="1" Grid.Row="2" 
                      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4">
                 <TextBlock Text="Username"
                     Style="{StaticResource SecondaryTextStyle}"/>
             </Viewbox>
 
             <!-- LEVEL -->
-            <Viewbox Grid.Column="1" Grid.Row="0"
-                     HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,20,0" >
-                <TextBlock Text="{Binding PlayerSegment.Statistics[level].DisplayValue, FallbackValue=420}"
-                    Style="{StaticResource PrimaryTextStyle}"/>
-            </Viewbox>
-
-            <Border Grid.Column="1" Grid.Row="1" Margin="0,0,15,0" MaxHeight="2"
-                    Background="{StaticResource TextSeperator}"/>
-
-            <Viewbox Grid.Column="1" Grid.Row="2"
-                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4">
-                <TextBlock Text="Level"
-                    Style="{StaticResource SecondaryTextStyle}"/>
-            </Viewbox>
-
-            <!-- WINS -->
             <Viewbox Grid.Column="2" Grid.Row="0"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,20,0" >
-                <TextBlock Text="{Binding PlayerSegment.Statistics[wins].DisplayValue, FallbackValue=420}"
+                <TextBlock Text="{Binding PlayerSegment.Statistics[level].DisplayValue, FallbackValue=420}"
                     Style="{StaticResource PrimaryTextStyle}"/>
             </Viewbox>
 
@@ -139,14 +121,14 @@
 
             <Viewbox Grid.Column="2" Grid.Row="2"
                      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4">
-                <TextBlock Text="Wins"
+                <TextBlock Text="Level"
                     Style="{StaticResource SecondaryTextStyle}"/>
             </Viewbox>
 
-            <!-- KILLS -->
+            <!-- WINS -->
             <Viewbox Grid.Column="3" Grid.Row="0"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,20,0" >
-                <TextBlock Text="{Binding PlayerSegment.Statistics[kills].DisplayValue, FallbackValue=420}"
+                <TextBlock Text="{Binding PlayerSegment.Statistics[wins].DisplayValue, FallbackValue=420}"
                     Style="{StaticResource PrimaryTextStyle}"/>
             </Viewbox>
 
@@ -155,14 +137,14 @@
 
             <Viewbox Grid.Column="3" Grid.Row="2"
                      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4">
-                <TextBlock Text="Kills"
+                <TextBlock Text="Wins"
                     Style="{StaticResource SecondaryTextStyle}"/>
             </Viewbox>
 
-            <!-- TOTAL DAMAGE -->
+            <!-- KILLS -->
             <Viewbox Grid.Column="4" Grid.Row="0"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,20,0" >
-                <TextBlock Text="{Binding PlayerSegment.Statistics[damage].DisplayValue, FallbackValue=420}"
+                <TextBlock Text="{Binding PlayerSegment.Statistics[kills].DisplayValue, FallbackValue=420}"
                     Style="{StaticResource PrimaryTextStyle}"/>
             </Viewbox>
 
@@ -171,47 +153,165 @@
 
             <Viewbox Grid.Column="4" Grid.Row="2"
                      HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4">
+                <TextBlock Text="Kills"
+                    Style="{StaticResource SecondaryTextStyle}"/>
+            </Viewbox>
+
+            <!-- TOTAL DAMAGE -->
+            <Viewbox Grid.Column="5" Grid.Row="0"
+                     HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,10,20,0" >
+                <TextBlock Text="{Binding PlayerSegment.Statistics[damage].DisplayValue, FallbackValue=420}"
+                    Style="{StaticResource PrimaryTextStyle}"/>
+            </Viewbox>
+
+            <Border Grid.Column="5" Grid.Row="1" Margin="0,0,15,0" MaxHeight="2"
+                    Background="{StaticResource TextSeperator}"/>
+
+            <Viewbox Grid.Column="5" Grid.Row="2"
+                     HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,0,0,4">
                 <TextBlock Text="Total Damage"
                     Style="{StaticResource SecondaryTextStyle}"/>
             </Viewbox>
         </Grid>
-        
+
+        <!-- LEGENDS -->
+        <ListView Grid.Column="0" Grid.Row="1"
+                 ItemsSource="{Binding LegendSegments}"
+                 Foreground="{StaticResource BackgroundPrimary}" Background="{StaticResource BackgroundSecondary}" BorderThickness="0" ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                 HorizontalContentAlignment="Stretch"
+                 ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="IsHitTestVisible" Value="False"/>
+                </Style>
+            </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <!-- BORDER -->
+                    <Border Background="{StaticResource DarkPrimary}" CornerRadius="2"
+                            BorderBrush="{StaticResource DarkSecondary}" BorderThickness="2">
+                        
+                        <!-- GRID -->
+                        <Grid ShowGridLines="False" HorizontalAlignment="Stretch">
+
+                            <!-- COLS -->
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="152"/>
+                                <ColumnDefinition Width="4*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <!-- ROWS -->
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="1*"/>
+                                <RowDefinition Height="152"/>
+                            </Grid.RowDefinitions>
+
+                            <!-- LEGEND NAME -->
+                            <TextBlock Grid.Column="0" Grid.Row="0" Margin="4,0,0,0" TextAlignment="Left"
+                            Text="{Binding Metadata.Name, FallbackValue=LegendName}" Style="{StaticResource PrimaryTextStyle}"/>
+                            <!-- SEPERATOR -->
+                            <Border Grid.ColumnSpan="2" Grid.Row="0" Background="{StaticResource DarkSecondary}" Height="2" VerticalAlignment="Bottom"/>
+
+                            <!-- LEGEND PORTRAIT BG -->
+                            <Border Grid.Column="0" Grid.Row="1" Background="{Binding Metadata.LegendColor}"/>
+                            <!-- LEGEND PORTRAIT -->
+                            <Image Grid.Column="0" Grid.Row="1" VerticalAlignment="Bottom"
+                               Source="{Binding Metadata.PortraitImageURL}"/>
+
+                            <!-- LEGEND STATS -->
+                            <ListView Grid.Column="1" Grid.Row="1"
+                                     ItemsSource="{Binding Statistics}"
+                                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                                     Foreground="Transparent" Background="Transparent" BorderThickness="0">
+
+                                <ListView.ItemsPanel>
+                                    <ItemsPanelTemplate>
+                                        <WrapPanel ItemWidth="175"/>
+                                    </ItemsPanelTemplate>
+                                </ListView.ItemsPanel>
+
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="ItemsControl.Margin" Value="4"/>
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border Background="{StaticResource BackgroundSecondary}" CornerRadius="4">
+                                            <StackPanel Orientation="Vertical" Margin="4">
+                                                <TextBlock Text="{Binding Value.DisplayName}" Style="{StaticResource SecondaryTextStyle}"
+                                                       FontSize="14"/>
+                                                <TextBlock Text="{Binding Value.DisplayValue}" Style="{StaticResource PrimaryTextStyle}"
+                                                       FontSize="28"/>
+                                                <Border Height="2" Background="Gray" Width="{Binding Value.Percentile}" HorizontalAlignment="Left"/>
+                                                <Border Height="2" Background="{StaticResource DarkSecondary}" Width="100" HorizontalAlignment="Left"/>
+                                                <TextBlock Text="{Binding Value.Percentile, Converter={StaticResource PercentileConverter}}" Style="{StaticResource SecondaryTextStyle}"
+                                                           FontSize="12"/>
+                                            </StackPanel>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                                
+                            </ListView>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
         <!-- SEPERATOR -->
+        <!--
         <Border Grid.ColumnSpan="2" Grid.Row="1" Background="#434355"/>
 
+        -->
         <!-- FIRST LEGEND -->
-        
+
         <!-- PORTRAIT -->
+        <!--
         <Border Grid.Row="2" Grid.Column="0"
                 Background="{Binding LegendSegments[0].Metadata.LegendColor}"/>
         <Viewbox Grid.Column="0" Grid.Row="2" Stretch="UniformToFill">
             <Image Source="{Binding LegendSegments[0].Metadata.PortraitImageURL}"/>
         </Viewbox>
         
+        -->
         <!-- STATS -->
+        <!--
         <Grid Grid.Column="1" Grid.Row="2" Margin="10,5,10,5">
 
-            <!-- COLS -->
+            -->
+        <!-- COLS -->
+        <!--
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- ROWS -->
+            -->
+        <!-- ROWS -->
+        <!--
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
 
-            <!-- LEGEND NAME -->
+            -->
+        <!-- LEGEND NAME -->
+        <!--
             <Viewbox Grid.Column="0" Grid.Row="0"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,20,0">
                 <TextBlock Text="{Binding LegendSegments[0].Metadata.Name, FallbackValue=Legend}"
                     Style="{StaticResource PrimaryTextStyle}" />
             </Viewbox>
 
-            <!-- BR KILLS -->
+            -->
+        <!-- BR KILLS -->
+        <!--
             <Viewbox Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
                 <StackPanel
                         Orientation="Vertical" VerticalAlignment="Center">
@@ -223,7 +323,9 @@
                 </StackPanel>
             </Viewbox>
 
-            <!-- BR DAMAGE -->
+            -->
+        <!-- BR DAMAGE -->
+        <!--
             <Viewbox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
                 <StackPanel
                         Orientation="Vertical" VerticalAlignment="Center">
@@ -235,7 +337,9 @@
                 </StackPanel>
             </Viewbox>
 
-            <!-- BR WINS -->
+            -->
+        <!-- BR WINS -->
+        <!--
             <Viewbox Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
                 <StackPanel
                         Orientation="Vertical" VerticalAlignment="Center">
@@ -248,42 +352,56 @@
             </Viewbox>
         </Grid>
 
+        -->
         <!-- SEPERATOR -->
+        <!--
         <Border Grid.ColumnSpan="2" Grid.Row="3" Background="#434355"/>
         
+        -->
         <!-- SECOND LEGEND -->
 
         <!-- PORTRAIT -->
+        <!--
         <Border Grid.Row="4" Grid.Column="0"
                 Background="{Binding LegendSegments[1].Metadata.LegendColor}"/>
         <Viewbox Grid.Column="0" Grid.Row="4" Stretch="UniformToFill">
             <Image Source="{Binding LegendSegments[1].Metadata.PortraitImageURL}"/>
         </Viewbox>
 
+        -->
         <!-- STATS -->
+        <!--
         <Grid Grid.Column="1" Grid.Row="4" Margin="10,5,10,5">
 
-            <!-- COLS -->
+            -->
+        <!-- COLS -->
+        <!--
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- ROWS -->
+            -->
+        <!-- ROWS -->
+        <!--
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
 
-            <!-- LEGEND NAME -->
+            -->
+        <!-- LEGEND NAME -->
+        <!--
             <Viewbox Grid.Column="0" Grid.Row="0"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,20,0">
                 <TextBlock Text="{Binding LegendSegments[1].Metadata.Name, FallbackValue=Legend}"
                     Style="{StaticResource PrimaryTextStyle}" />
             </Viewbox>
 
-            <!-- BR KILLS -->
+            -->
+        <!-- BR KILLS -->
+        <!--
             <Viewbox Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
                 <StackPanel
                         Orientation="Vertical" VerticalAlignment="Center">
@@ -295,7 +413,9 @@
                 </StackPanel>
             </Viewbox>
 
-            <!-- BR DAMAGE -->
+            -->
+        <!-- BR DAMAGE -->
+        <!--
             <Viewbox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
                 <StackPanel
                         Orientation="Vertical" VerticalAlignment="Center">
@@ -307,7 +427,9 @@
                 </StackPanel>
             </Viewbox>
 
-            <!-- BR WINS -->
+            -->
+        <!-- BR WINS -->
+        <!--
             <Viewbox Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
                 <StackPanel
                         Orientation="Vertical" VerticalAlignment="Center">
@@ -320,42 +442,56 @@
             </Viewbox>
         </Grid>
 
+        -->
         <!-- SEPERATOR -->
+        <!--
         <Border Grid.ColumnSpan="2" Grid.Row="5" Background="#434355"/>
 
+        -->
         <!-- THIRD LEGEND -->
 
         <!-- PORTRAIT -->
+        <!--
         <Border Grid.Row="6" Grid.Column="0"
                 Background="{Binding LegendSegments[2].Metadata.LegendColor}"/>
         <Viewbox Grid.Column="0" Grid.Row="6" Stretch="UniformToFill">
             <Image Source="{Binding LegendSegments[2].Metadata.PortraitImageURL}"/>
         </Viewbox>
 
+        -->
         <!-- STATS -->
+        <!--
         <Grid Grid.Column="1" Grid.Row="6" Margin="10,5,10,5">
 
-            <!-- COLS -->
+            -->
+        <!-- COLS -->
+        <!--
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
 
-            <!-- ROWS -->
+            -->
+        <!-- ROWS -->
+        <!--
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
 
-            <!-- LEGEND NAME -->
+            -->
+        <!-- LEGEND NAME -->
+        <!--
             <Viewbox Grid.Column="0" Grid.Row="0"
                      HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="0,0,20,0">
                 <TextBlock Text="{Binding LegendSegments[2].Metadata.Name, FallbackValue=Legend}"
                     Style="{StaticResource PrimaryTextStyle}" />
             </Viewbox>
 
-            <!-- BR KILLS -->
+            -->
+        <!-- BR KILLS -->
+        <!--
             <Viewbox Grid.Column="0" Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
                 <StackPanel
                         Orientation="Vertical" VerticalAlignment="Center">
@@ -367,7 +503,9 @@
                 </StackPanel>
             </Viewbox>
 
-            <!-- BR DAMAGE -->
+            -->
+        <!-- BR DAMAGE -->
+        <!--
             <Viewbox Grid.Column="1" Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
                 <StackPanel
                         Orientation="Vertical" VerticalAlignment="Center">
@@ -379,7 +517,9 @@
                 </StackPanel>
             </Viewbox>
 
-            <!-- BR WINS -->
+            -->
+        <!-- BR WINS -->
+        <!--
             <Viewbox Grid.Column="2" Grid.Row="1" HorizontalAlignment="Left" Margin="0,10,0,0">
                 <StackPanel
                         Orientation="Vertical" VerticalAlignment="Center">
@@ -392,7 +532,9 @@
             </Viewbox>
         </Grid>
 
+        -->
         <!-- SEPERATOR -->
-        <Border Grid.ColumnSpan="2" Grid.Row="7" Background="#434355"/>
+        <!--
+        <Border Grid.ColumnSpan="2" Grid.Row="7" Background="#434355"/>-->
     </Grid>
 </Page>
