@@ -6,7 +6,9 @@
         xmlns:local="clr-namespace:ApexStats"
         xmlns:vm="clr-namespace:ApexStats.ViewModel"
         mc:Ignorable="d"
-        Title="Apex Legends - StatTrack" Height="450" Width="800">
+        Title="Apex Legends - StatTrack"
+        Height="520" Width="804"
+        MinHeight="470" MinWidth="804">
     <Window.DataContext>
         <vm:MainWindowVM/>
     </Window.DataContext>

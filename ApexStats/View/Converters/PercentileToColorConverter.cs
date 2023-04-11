@@ -1,19 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows.Data;
+using System.Windows.Media;
 
 namespace ApexStats.View.Converters
 {
-    internal class PercentileToStringConverter : IValueConverter
+    internal class PercentileToColorConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             float percentile = (float)value;
-            return percentile <= 50 ? $"Bottom {percentile}%" : $"Top {100.0f - percentile}%";
+            if (percentile >= 75.0f)
+                return "#FFCC33";
+            else
+                return "#8f94a5";
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
