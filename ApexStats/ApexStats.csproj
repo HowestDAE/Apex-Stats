@@ -86,7 +86,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Model\IPlayerStatsRepository.cs" />
+    <Compile Include="Repositories\IPlayerStatsRepository.cs" />
+    <Compile Include="Repositories\APIPlayerStatsRepository.cs" />
     <Compile Include="Repositories\LocalPlayerStatsRepository.cs" />
     <Compile Include="ViewModel\MainWindowVM.cs" />
     <Compile Include="ViewModel\PlayerStatsVM.cs" />

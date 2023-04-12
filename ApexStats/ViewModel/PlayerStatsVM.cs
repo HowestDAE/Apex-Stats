@@ -16,7 +16,13 @@ namespace ApexStats.ViewModel
 {
     internal class PlayerStatsVM : ObservableObject
     {
-        public IPlayerStatsRepository PlayerStatsRepository { get; set; } = new LocalPlayerStatsRepository();
+        public IPlayerStatsRepository PlayerStatsRepository { get; set; } = new APIPlayerStatsRepository();
+
+        // USER CREDENTIALS
+        public string Username { get; set; }
+        public string Platform { get; set; }
+
+        public List<string> Platforms { get; set; } = new List<string>() { "origin", "psn", "xbl" };
 
         private PlayerStatistics _playerStatistics;
         public PlayerStatistics PlayerStatistics
@@ -44,12 +50,12 @@ namespace ApexStats.ViewModel
         public PlayerStatsVM()
         { 
             GetPlayerStatsCommand = new RelayCommand(async() => await GetPlayerStatsAsync());
-            GetPlayerStatsCommand.Execute(this);
+            // GetPlayerStatsCommand.Execute(this);
         }
 
         private async Task GetPlayerStatsAsync()
         {
-            _playerStatistics = await PlayerStatsRepository.GetPlayerStatsAsync("MemesKeepMeLivin", "origin");
+            PlayerStatistics = await PlayerStatsRepository.GetPlayerStatsAsync(Username, Platform);
             GetAcountData();
             GetLegendData();
         }
@@ -59,7 +65,7 @@ namespace ApexStats.ViewModel
         /// </summary>
         private void GetAcountData()
         {
-            _playerSegment = _playerStatistics.Segments[0];
+            PlayerSegment = _playerStatistics.Segments[0];
         }
 
         /// <summary>
@@ -71,7 +77,7 @@ namespace ApexStats.ViewModel
             {
                 // Segment is a legend with 3 or more statistics
                 if (segment.Type == "legend" && segment.Statistics.Count >= 1)
-                    _legendSegments.Add(segment);
+                    LegendSegments.Add(segment);
             }
         }
     }
