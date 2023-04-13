@@ -13,6 +13,7 @@ namespace ApexStats.View.Converters
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
+            if(value == null) return "#8f94a5";
             float percentile = (float)value;
             if (percentile >= 75.0f)
                 return "#FFCC33";

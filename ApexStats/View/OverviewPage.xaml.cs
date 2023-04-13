@@ -16,11 +16,11 @@ using System.Windows.Shapes;
 namespace ApexStats.View
 {
     /// <summary>
-    /// Interaction logic for PlayerStatsPage.xaml
+    /// Interaction logic for OverviewPage.xaml
     /// </summary>
-    public partial class PlayerStatsPage : Page
+    public partial class OverviewPage : Page
     {
-        public PlayerStatsPage()
+        public OverviewPage()
         {
             InitializeComponent();
         }

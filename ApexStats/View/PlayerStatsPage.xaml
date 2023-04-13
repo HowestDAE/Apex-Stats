@@ -7,7 +7,7 @@
       xmlns:vm="clr-namespace:ApexStats.ViewModel"
       xmlns:cv="clr-namespace:ApexStats.View.Converters"
       mc:Ignorable="d" 
-      d:DesignHeight="590" d:DesignWidth="850"
+      d:DesignHeight="620" d:DesignWidth="805"
       Title="PlayerStatsPage">
     
     <Page.DataContext>
@@ -18,12 +18,11 @@
         <cv:PercentileToStringConverter x:Key="PercentileToStringConverter"/>
         <cv:PercentileToColorConverter x:Key="PercintileToColorConverter"/>
     </Page.Resources>
-    
-    <Grid>
 
+    <Grid>
         <!-- COLS -->
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="316"/>
+            <ColumnDefinition Width="318"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
@@ -38,8 +37,8 @@
             <SolidColorBrush x:Key="BackgroundSecondary" Color="#363848"/>
             <SolidColorBrush x:Key="DarkPrimary" Color="#21212a"/>
             <SolidColorBrush x:Key="DarkSecondary" Color="#434355"/>
-            
-            
+
+
             <SolidColorBrush x:Key="TextSeperator" Color="#b33834"/>
             <SolidColorBrush x:Key="TextPrimary" Color="White"/>
             <SolidColorBrush x:Key="TextSecondary" Color="#8f94a5"/>
@@ -57,10 +56,6 @@
             </Style>
         </Grid.Resources>
 
-        <!-- BACKGROUNDS -->
-        <Border Grid.ColumnSpan="2" Grid.RowSpan="2" 
-            Background="{StaticResource BackgroundSecondary}"/>
-
         <!-- Player Stats -->
         <Border Margin="4"
                 Background="{StaticResource DarkPrimary}" CornerRadius="2" 
@@ -71,7 +66,6 @@
                 <!-- COLS -->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
-
                 </Grid.ColumnDefinitions>
 
                 <!-- ROWS -->
@@ -80,7 +74,6 @@
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="98"/>
                     <RowDefinition Height="184"/>
-                    <RowDefinition Height="145"/>
                 </Grid.RowDefinitions>
 
                 <!-- USER ICON -->
@@ -167,19 +160,16 @@
                     </StackPanel>
                 </StackPanel>
 
-                <Border Grid.Row="4" Height="2" Background="{StaticResource DarkSecondary}"
-                        VerticalAlignment="Top"/>
-
                 <!-- PLAYER SEARCH -->
-                <Grid Grid.Row="4" Margin="8">
+                <!--<Grid Grid.Row="4" Margin="8">
 
-                    <!-- COLS -->
+                    --><!-- COLS --><!--
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2.*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
 
-                    <!-- ROWS -->
+                    --><!-- ROWS --><!--
                     <Grid.RowDefinitions>
                         <RowDefinition Height="0.6*"/>
                         <RowDefinition Height="0.8*"/>
@@ -212,14 +202,14 @@
                         <TextBlock Text="BACK TO OVERVIEW PAGE" Style="{StaticResource SecondaryTextStyle}"/>
                     </Button>
 
-                </Grid>
+                </Grid>-->
             </Grid>
         </Border>
         
          <!-- LEGENDS -->
         <ListView Grid.Column="1" Grid.Row="0" x:Name="LegendsLV"
                  ItemsSource="{Binding LegendSegments}"
-                 Foreground="{StaticResource BackgroundPrimary}" Background="{StaticResource BackgroundSecondary}" BorderThickness="0"
+                 Foreground="Transparent" Background="Transparent" BorderThickness="0"
                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
                  ScrollViewer.VerticalScrollBarVisibility="Disabled" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
 
@@ -254,7 +244,7 @@
                             </Grid.RowDefinitions>
 
                             <!-- LEGEND NAME -->
-                            <TextBlock Grid.Column="0" Grid.Row="0" Margin="4,2" TextAlignment="Left"
+                            <TextBlock Grid.ColumnSpan="2" Grid.Row="0" Margin="4,2" TextAlignment="Left"
                             Text="{Binding Metadata.Name, FallbackValue=LegendName}" Style="{StaticResource PrimaryTextStyle}"/>
                             <!-- SEPERATOR -->
                             <Border Grid.ColumnSpan="2" Grid.Row="0" Background="{StaticResource DarkSecondary}" Height="2" VerticalAlignment="Bottom"/>

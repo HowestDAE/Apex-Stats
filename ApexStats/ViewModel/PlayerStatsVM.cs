@@ -8,6 +8,12 @@ using System.Windows;
 
 namespace ApexStats.ViewModel
 {
+    enum RepositoryType
+    {
+        Local,
+        API
+    }
+
     internal class PlayerStatsVM : ObservableObject
     {
         public IPlayerStatsRepository PlayerStatsRepository { get; set; }
@@ -15,8 +21,6 @@ namespace ApexStats.ViewModel
         // USER CREDENTIALS
         public string Username { get; set; }
         public string Platform { get; set; }
-
-        public bool AreCredentialsFilled => Platform != string.Empty && Username != string.Empty;
 
         public List<string> Platforms { get; set; } = new List<string> { "origin", "psn", "xbl" };
 
@@ -41,20 +45,27 @@ namespace ApexStats.ViewModel
             set => SetProperty(ref _legendSegments, value);
         }
 
-        public RelayCommand<string> GetPlayerStatsCommand { get; set; }
+        public RelayCommand<RepositoryType> GetPlayerStatsCommand { get; set; }
 
         public PlayerStatsVM()
         {
-            GetPlayerStatsCommand = new RelayCommand<string>(async(param) => await GetPlayerStatsAsync(param));
+            GetPlayerStatsCommand = new RelayCommand<RepositoryType>(async(param) => await GetPlayerStatsAsync(param));
         }
 
-        private async Task GetPlayerStatsAsync(string repoType)
+        private async Task GetPlayerStatsAsync(RepositoryType repoType)
         {
-            if(repoType == "API")
-                PlayerStatsRepository = new APIPlayerStatsRepository();
-            else
-                PlayerStatsRepository = new LocalPlayerStatsRepository();
-
+            switch (repoType)
+            {
+                case RepositoryType.Local:
+                    PlayerStatsRepository = new LocalPlayerStatsRepository();
+                    break;
+                case RepositoryType.API:
+                    PlayerStatsRepository = new APIPlayerStatsRepository();
+                    break;
+                default:
+                    PlayerStatsRepository = new LocalPlayerStatsRepository();
+                    break;
+            }
             PlayerStatistics = await PlayerStatsRepository.GetPlayerStatsAsync(Username, Platform);
 
             // Something might go wrong when fetching data from the API (Too Many Requests, API unreachable, ...)
@@ -71,6 +82,16 @@ namespace ApexStats.ViewModel
             var legendSegments = new List<Segment>();
             foreach (var segment in PlayerStatistics.Segments)
             {
+                // The API sometimes fetches stats of a legend with a null value
+                // Remove these stats from the legend to prevent any issues with binding
+                var keysToRemove = new List<string>();
+
+                foreach(var stat in segment.Statistics)
+                    if (stat.Value.Percentile == null) keysToRemove.Add(stat.Key);
+
+                foreach (var key in keysToRemove)
+                    segment.Statistics.Remove(key);
+
                 // Only get data from legends that have one or more statistics
                 if (segment.Type == "legend" && segment.Statistics.Count >= 1)
                     legendSegments.Add(segment);
