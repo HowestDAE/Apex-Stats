@@ -30,9 +30,9 @@ namespace ApexStats.Repositories
                     string json = await response.Content.ReadAsStringAsync();
                     return JsonConvert.DeserializeObject<JObject>(json).SelectToken("data").ToObject<PlayerStatistics>();
                 }
-                catch (Exception e)
+                catch (Exception)
                 {
-                    throw e;
+                    return null;
                 }
             }
         }

@@ -23,6 +23,10 @@ namespace ApexStats.View
         public PlayerStatsPage()
         {
             InitializeComponent();
+
+            #if DEBUG
+            System.Diagnostics.PresentationTraceSources.SetTraceLevel(LegendsLV.ItemContainerGenerator, System.Diagnostics.PresentationTraceLevel.High);
+            #endif
         }
     }
 }

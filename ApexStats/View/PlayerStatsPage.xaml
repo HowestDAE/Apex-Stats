@@ -76,11 +76,11 @@
 
                 <!-- ROWS -->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="98"/>
-                    <RowDefinition Height="44"/>
+                    <RowDefinition Height="110"/>
+                    <RowDefinition Height="40"/>
                     <RowDefinition Height="98"/>
                     <RowDefinition Height="184"/>
-                    <RowDefinition Height="150"/>
+                    <RowDefinition Height="145"/>
                 </Grid.RowDefinitions>
 
                 <!-- USER ICON -->
@@ -103,8 +103,8 @@
 
                 <!-- RANKS -->
                 <StackPanel Grid.Column="0" Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Stretch">
-                    <Image Source="{Binding PlayerSegment.Statistics[peakRankScore].Metadata.IconURL}" ToolTip="Peak Rank"/>
-                    <Image Source="{Binding PlayerSegment.Statistics[rankScore].Metadata.IconURL}" ToolTip="Current Rank"/>
+                    <Image Source="{Binding AccountSegment.Statistics[peakRankScore].Metadata.IconURL}" ToolTip="Peak Rank"/>
+                    <Image Source="{Binding AccountSegment.Statistics[rankScore].Metadata.IconURL}" ToolTip="Current Rank"/>
                 </StackPanel>
                 
                 <!-- ACCOUNT STATS -->
@@ -113,27 +113,27 @@
                         <!-- LEVEL -->
                         <Border Background="{StaticResource BackgroundSecondary}" CornerRadius="4" Margin="8,4,4,4" Width="142" Height="82">
                             <StackPanel Orientation="Vertical" Margin="4">
-                                <TextBlock Text="{Binding PlayerSegment.Statistics[level].DisplayName}" Style="{StaticResource SecondaryTextStyle}"
+                                <TextBlock Text="{Binding AccountSegment.Statistics[level].DisplayName}" Style="{StaticResource SecondaryTextStyle}"
                                     FontSize="14"/>
-                                <TextBlock Text="{Binding PlayerSegment.Statistics[level].DisplayValue}" Style="{StaticResource PrimaryTextStyle}"
+                                <TextBlock Text="{Binding AccountSegment.Statistics[level].DisplayValue}" Style="{StaticResource PrimaryTextStyle}"
                                     FontSize="28"/>
-                                <Border Height="2" Background="Gray" Width="{Binding PlayerSegment.Statistics[kills].Percentile}" HorizontalAlignment="Left"/>
+                                <Border Height="2" Background="Gray" Width="{Binding AccountSegment.Statistics[kills].Percentile}" HorizontalAlignment="Left"/>
                                 <Border Height="2" Background="{StaticResource DarkSecondary}" Width="100" HorizontalAlignment="Left"/>
-                                <TextBlock Text="{Binding PlayerSegment.Statistics[level].Percentile, Converter={StaticResource PercentileToStringConverter}}" Style="{StaticResource SecondaryTextStyle}"
-                                    Foreground="{Binding PlayerSegment.Statistics[level].Percentile, Converter={StaticResource PercintileToColorConverter}}" FontSize="12"/>
+                                <TextBlock Text="{Binding AccountSegment.Statistics[level].Percentile, Converter={StaticResource PercentileToStringConverter}}" Style="{StaticResource SecondaryTextStyle}"
+                                    Foreground="{Binding AccountSegment.Statistics[level].Percentile, Converter={StaticResource PercintileToColorConverter}}" FontSize="12"/>
                             </StackPanel>
                         </Border>
                         <!-- KILLS -->
                         <Border Background="{StaticResource BackgroundSecondary}" CornerRadius="4" Margin="4,4,8,4" Width="140" Height="82">
                             <StackPanel Orientation="Vertical" Margin="4">
-                                <TextBlock Text="{Binding PlayerSegment.Statistics[kills].DisplayName}" Style="{StaticResource SecondaryTextStyle}"
+                                <TextBlock Text="{Binding AccountSegment.Statistics[kills].DisplayName}" Style="{StaticResource SecondaryTextStyle}"
                                     FontSize="14"/>
-                                <TextBlock Text="{Binding PlayerSegment.Statistics[kills].DisplayValue}" Style="{StaticResource PrimaryTextStyle}"
+                                <TextBlock Text="{Binding AccountSegment.Statistics[kills].DisplayValue}" Style="{StaticResource PrimaryTextStyle}"
                                     FontSize="28"/>
-                                <Border Height="2" Background="Gray" Width="{Binding PlayerSegment.Statistics[kills].Percentile}" HorizontalAlignment="Left"/>
+                                <Border Height="2" Background="Gray" Width="{Binding AccountSegment.Statistics[kills].Percentile}" HorizontalAlignment="Left"/>
                                 <Border Height="2" Background="{StaticResource DarkSecondary}" Width="100" HorizontalAlignment="Left"/>
-                                <TextBlock Text="{Binding PlayerSegment.Statistics[kills].Percentile, Converter={StaticResource PercentileToStringConverter}}" Style="{StaticResource SecondaryTextStyle}"
-                                    Foreground="{Binding PlayerSegment.Statistics[kills].Percentile, Converter={StaticResource PercintileToColorConverter}}" FontSize="12"/>
+                                <TextBlock Text="{Binding AccountSegment.Statistics[kills].Percentile, Converter={StaticResource PercentileToStringConverter}}" Style="{StaticResource SecondaryTextStyle}"
+                                    Foreground="{Binding AccountSegment.Statistics[kills].Percentile, Converter={StaticResource PercintileToColorConverter}}" FontSize="12"/>
                             </StackPanel>
                         </Border>
                     </StackPanel>
@@ -141,31 +141,34 @@
                         <!-- DAMAGE -->
                         <Border Background="{StaticResource BackgroundSecondary}" CornerRadius="4" Margin="8,4,4,4" Width="142" Height="82">
                             <StackPanel Orientation="Vertical" Margin="4">
-                                <TextBlock Text="{Binding PlayerSegment.Statistics[damage].DisplayName}" Style="{StaticResource SecondaryTextStyle}"
+                                <TextBlock Text="{Binding AccountSegment.Statistics[damage].DisplayName}" Style="{StaticResource SecondaryTextStyle}"
                                 FontSize="14"/>
-                                <TextBlock Text="{Binding PlayerSegment.Statistics[damage].DisplayValue}" Style="{StaticResource PrimaryTextStyle}"
+                                <TextBlock Text="{Binding AccountSegment.Statistics[damage].DisplayValue}" Style="{StaticResource PrimaryTextStyle}"
                                 FontSize="28"/>
-                                <Border Height="2" Background="Gray" Width="{Binding PlayerSegment.Statistics[kills].Percentile}" HorizontalAlignment="Left"/>
+                                <Border Height="2" Background="Gray" Width="{Binding AccountSegment.Statistics[kills].Percentile}" HorizontalAlignment="Left"/>
                                 <Border Height="2" Background="{StaticResource DarkSecondary}" Width="100" HorizontalAlignment="Left"/>
-                                <TextBlock Text="{Binding PlayerSegment.Statistics[damage].Percentile, Converter={StaticResource PercentileToStringConverter}}" Style="{StaticResource SecondaryTextStyle}"
-                                Foreground="{Binding PlayerSegment.Statistics[damage].Percentile, Converter={StaticResource PercintileToColorConverter}}" FontSize="12"/>
+                                <TextBlock Text="{Binding AccountSegment.Statistics[damage].Percentile, Converter={StaticResource PercentileToStringConverter}}" Style="{StaticResource SecondaryTextStyle}"
+                                Foreground="{Binding AccountSegment.Statistics[damage].Percentile, Converter={StaticResource PercintileToColorConverter}}" FontSize="12"/>
                             </StackPanel>
                         </Border>
                         <!-- WINS -->
                         <Border Background="{StaticResource BackgroundSecondary}" CornerRadius="4" Margin="4,4,8,4" Width="140" Height="82">
                             <StackPanel Orientation="Vertical" Margin="4">
-                                <TextBlock Text="{Binding PlayerSegment.Statistics[wins].DisplayName}" Style="{StaticResource SecondaryTextStyle}"
+                                <TextBlock Text="{Binding AccountSegment.Statistics[wins].DisplayName}" Style="{StaticResource SecondaryTextStyle}"
                                 FontSize="14"/>
-                                <TextBlock Text="{Binding PlayerSegment.Statistics[wins].DisplayValue}" Style="{StaticResource PrimaryTextStyle}"
+                                <TextBlock Text="{Binding AccountSegment.Statistics[wins].DisplayValue}" Style="{StaticResource PrimaryTextStyle}"
                                 FontSize="28"/>
-                                <Border Height="2" Background="Gray" Width="{Binding PlayerSegment.Statistics[kills].Percentile}" HorizontalAlignment="Left"/>
+                                <Border Height="2" Background="Gray" Width="{Binding AccountSegment.Statistics[kills].Percentile}" HorizontalAlignment="Left"/>
                                 <Border Height="2" Background="{StaticResource DarkSecondary}" Width="100" HorizontalAlignment="Left"/>
-                                <TextBlock Text="{Binding PlayerSegment.Statistics[wins].Percentile, Converter={StaticResource PercentileToStringConverter}}" Style="{StaticResource SecondaryTextStyle}"
-                                Foreground="{Binding PlayerSegment.Statistics[wins].Percentile, Converter={StaticResource PercintileToColorConverter}}" FontSize="12"/>
+                                <TextBlock Text="{Binding AccountSegment.Statistics[wins].Percentile, Converter={StaticResource PercentileToStringConverter}}" Style="{StaticResource SecondaryTextStyle}"
+                                Foreground="{Binding AccountSegment.Statistics[wins].Percentile, Converter={StaticResource PercintileToColorConverter}}" FontSize="12"/>
                             </StackPanel>
                         </Border>
                     </StackPanel>
                 </StackPanel>
+
+                <Border Grid.Row="4" Height="2" Background="{StaticResource DarkSecondary}"
+                        VerticalAlignment="Top"/>
 
                 <!-- PLAYER SEARCH -->
                 <Grid Grid.Row="4" Margin="8">
@@ -178,7 +181,7 @@
 
                     <!-- ROWS -->
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="0.7*"/>
+                        <RowDefinition Height="0.6*"/>
                         <RowDefinition Height="0.8*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
@@ -195,8 +198,14 @@
                         ItemsSource="{Binding Platforms}" SelectedIndex="0" Margin="4" SelectedItem="{Binding Platform}">
                     </ComboBox>
 
-                    <Button Grid.ColumnSpan="2" Grid.Row="2" Margin="4" Background="{StaticResource DarkSecondary}" Command="{Binding GetPlayerStatsCommand}">
+                    <Button Grid.Column="0" Grid.Row="2" Margin="4" Background="{StaticResource DarkSecondary}"
+                            Command="{Binding GetPlayerStatsCommand}" CommandParameter="API">
                         <TextBlock Text="FETCH PLAYER DATA" Style="{StaticResource PrimaryTextStyle}"/>
+                    </Button>
+
+                    <Button Grid.Column="1" Grid.Row="2" Margin="4" Background="{StaticResource DarkSecondary}"
+                            Command="{Binding GetPlayerStatsCommand}" CommandParameter="Local">
+                        <TextBlock Text="LOAD LOCAL DATA" Style="{StaticResource SecondaryTextStyle}"/>
                     </Button>
 
                     <Button Grid.ColumnSpan="2" Grid.Row="3" Margin="4" Background="{StaticResource DarkSecondary}">
@@ -208,7 +217,7 @@
         </Border>
         
          <!-- LEGENDS -->
-        <ListView Grid.Column="1" Grid.Row="0"
+        <ListView Grid.Column="1" Grid.Row="0" x:Name="LegendsLV"
                  ItemsSource="{Binding LegendSegments}"
                  Foreground="{StaticResource BackgroundPrimary}" Background="{StaticResource BackgroundSecondary}" BorderThickness="0"
                  HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch"
