@@ -7,7 +7,7 @@
         xmlns:vm="clr-namespace:ApexStats.ViewModel"
         mc:Ignorable="d"
         Title="Apex Legends - StatTrack"
-        Icon="Resources/Images/Icon.png"
+        Icon="pack://application:,,,/Resources/Images/Icon.png"
         Height="620" Width="805"
         MinHeight="620" MinWidth="805">
     

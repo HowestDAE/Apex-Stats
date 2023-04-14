@@ -1,4 +1,5 @@
 ﻿using ApexStats.Model;
+using ApexStats.Repositories.Interfaces;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System;
@@ -11,17 +12,17 @@ using System.Threading.Tasks;
 
 namespace ApexStats.Repositories
 {
-    internal class LocalPlayerStatsRepository : IPlayerStatsRepository
+    internal class LocalShopRepository : IShopRepository
     {
-        private PlayerStatistics _playerStatistics;
+        private List<ShopItem> _shopItems;
 
-        public async Task<PlayerStatistics> GetPlayerStatsAsync(string username, string platform)
+        public async Task<List<ShopItem>> GetShopItemsAsync()
         {
-            if (_playerStatistics != null) return _playerStatistics;
+            if (_shopItems != null) return _shopItems;
 
             // Get the assembly
             var assembly = Assembly.GetExecutingAssembly();
-            var resourceName = "ApexStats.Resources.Data.playerstats_local.json";
+            var resourceName = "ApexStats.Resources.Data.shop_local.json";
 
             // Read the JSON file
             using (Stream stream = assembly.GetManifestResourceStream(resourceName))
@@ -29,7 +30,7 @@ namespace ApexStats.Repositories
                 using (var reader = new StreamReader(stream))
                 {
                     string json = await reader.ReadToEndAsync();
-                    return _playerStatistics = JsonConvert.DeserializeObject<JObject>(json).SelectToken("data").ToObject<PlayerStatistics>();
+                    return _shopItems = JsonConvert.DeserializeObject<List<ShopItem>>(json);
                 }
             }
         }

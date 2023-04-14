@@ -1,0 +1,536 @@
+[
+  {
+    "title": "Chromatic Surge Bundle",
+    "desc": "",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1682442456,
+    "shopType": "specials",
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 6700
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/weapon_skin/dmr/lgnd_v22_skinline.rpak",
+        "name": "Yellow Surge",
+        "quantity": 1
+      },
+      {
+        "ref": "settings/itemflav/weapon_skin/r301/lgnd_v22_bluesurge.rpak",
+        "name": "Blue Surge",
+        "quantity": 1
+      },
+      {
+        "ref": "settings/itemflav/weapon_skin/volt/lgnd_v22_skinline.rpak",
+        "name": "Green Surge",
+        "quantity": 1
+      },
+      {
+        "ref": "settings/itemflav/pack/cosmetic_rare.rpak",
+        "name": "Apex Pack",
+        "quantity": 30
+      }
+    ],
+    "offerID": "230411_chromatic_surge_bundle",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_bund_chromaticsurge_018t.png"
+  },
+  {
+    "title": "Deputy of Death Bundle",
+    "desc": "",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1683047256,
+    "shopType": "shop",
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 2150
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/character_skin/caustic/s08e01_legendary_01.rpak",
+        "name": "Deputy of Death",
+        "quantity": 1
+      },
+      {
+        "ref": "settings/itemflav/weapon_skin/wingman/s08e01_legendary_01.rpak",
+        "name": "Lawbringer",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_deputy_of_death_bundle",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_bund_deputyofdeath_vl3h.png"
+  },
+  {
+    "title": "Yellow Surge",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1682442456,
+    "shopType": "specials",
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 1800
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/weapon_skin/dmr/lgnd_v22_skinline.rpak",
+        "name": "Yellow Surge",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_yellow_surge",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_wskin_long_lgnd_v22line_8wgz.png"
+  },
+  {
+    "title": "Quarantine 722",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1681492056,
+    "shopType": "shop",
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 1800
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/character_skin/wraith/legendary_03.rpak",
+        "name": "Quarantine 722",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_quarantine_722",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_cskin_wrai_lgnd_03_5xzo.png"
+  },
+  {
+    "title": "Blue Surge",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1682442456,
+    "shopType": "specials",
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 1800
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/weapon_skin/r301/lgnd_v22_bluesurge.rpak",
+        "name": "Blue Surge",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_blue_surge",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_wskin_r301_lgnd_v22bluesurge_jewe.png"
+  },
+  {
+    "title": "Burgundy Knight Bonus Bundle",
+    "desc": "",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1683047256,
+    "shopType": "shop",
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 1800
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/character_skin/pathfinder/s08e02_legendary_01.rpak",
+        "name": "The Burgundy Knight",
+        "quantity": 1
+      },
+      {
+        "ref": "settings/itemflav/pack/cosmetic_rare.rpak",
+        "name": "Apex Pack",
+        "quantity": 2
+      }
+    ],
+    "offerID": "230411_burgundy_knight_bonus_bundle",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_bund_burgundyknightbonus_v0j6.png"
+  },
+  {
+    "title": "Depths of the Void",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1681492056,
+    "shopType": "shop",
+    "pricing": [
+      {
+        "ref": "Legend Tokens",
+        "quantity": 6500
+      },
+      {
+        "ref": "Apex Coins",
+        "quantity": 1800
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/character_skin/wraith/shop_legendary_04.rpak",
+        "name": "Depths of the Void",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_depths_of_the_void",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_cskin_wrai_lgnd_shop04_p789.png"
+  },
+  {
+    "title": "Green Surge",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1682442456,
+    "shopType": "specials",
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 1800
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/weapon_skin/volt/lgnd_v22_skinline.rpak",
+        "name": "Green Surge",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_green_surge",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_wskin_volt_lgnd_smgv22line_t6t4.png"
+  },
+  {
+    "title": "Silver Fox",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1681492056,
+    "shopType": "shop",
+    "pricing": [
+      {
+        "ref": "Legend Tokens",
+        "quantity": 10500
+      },
+      {
+        "ref": "Apex Coins",
+        "quantity": 1800
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/character_skin/fuse/shop_legendary_03.rpak",
+        "name": "Silver Fox",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_silver_fox",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_cskin_fuse_lgnd_shop03_jve5.png"
+  },
+  {
+    "title": "Old Gold",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1681492056,
+    "shopType": "shop",
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 1800
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/character_skin/fuse/legendary_04.rpak",
+        "name": "Old Gold",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_old_gold",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_cskin_fuse_lgnd_04_6u2m.png"
+  },
+  {
+    "title": "Warp Zone",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1681492056,
+    "shopType": "specials",
+    "originalPrice": 1800,
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 1250
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/weapon_skin/mastiff/legendary_01.rpak",
+        "name": "Warp Zone",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_warp_zone",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_wskin_mast_lgnd_01_81b4.png"
+  },
+  {
+    "title": "Timeless Timber",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1681492056,
+    "shopType": "specials",
+    "originalPrice": 1800,
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 1250
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/weapon_skin/compound_bow/legendary_04.rpak",
+        "name": "Timeless Timber",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_timeless_timber",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_wskin_boce_lgnd_04_ct7d.png"
+  },
+  {
+    "title": "The Illuminator",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1681492056,
+    "shopType": "specials",
+    "pricing": [
+      {
+        "ref": "Legend Tokens",
+        "quantity": 6500
+      },
+      {
+        "ref": "Apex Coins",
+        "quantity": 1250
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/weapon_skin/alternator/shop_legendary_02.rpak",
+        "name": "The Illuminator",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_the_illuminator",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_wskin_alte_lgnd_shop02_fb46.png"
+  },
+  {
+    "title": "Aurora Arrow",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1681492056,
+    "shopType": "specials",
+    "pricing": [
+      {
+        "ref": "Legend Tokens",
+        "quantity": 10500
+      },
+      {
+        "ref": "Apex Coins",
+        "quantity": 1250
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/weapon_skin/compound_bow/shop_legendary_04.rpak",
+        "name": "Aurora Arrow",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_aurora_arrow",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_wskin_boce_lgnd_shop04_y0y0.png"
+  },
+  {
+    "title": "Pixel Hunter",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1681492056,
+    "shopType": "specials",
+    "pricing": [
+      {
+        "ref": "Legend Tokens",
+        "quantity": 10500
+      },
+      {
+        "ref": "Apex Coins",
+        "quantity": 1250
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/weapon_skin/mastiff/shop_legendary_02.rpak",
+        "name": "Pixel Hunter",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_pixel_hunter",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_wskin_mast_lgnd_shop02_17h0.png"
+  },
+  {
+    "title": "LED Rez",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1681492056,
+    "shopType": "specials",
+    "originalPrice": 1800,
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 1250
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/weapon_skin/alternator/legendary_03.rpak",
+        "name": "LED Rez",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_led_rez",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_wskin_alte_lgnd_03_282o.png"
+  },
+  {
+    "title": "Awoken Fury",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1683047256,
+    "shopType": "shop",
+    "originalPrice": 1800,
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 1250
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/character_skin/crypto/s08ace_legendary_01.rpak",
+        "name": "Awoken Fury",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_awoken_fury",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_cskin_cryp_lgnd_s08ace01_c0f3.png"
+  },
+  {
+    "title": "Guardian of Atlantis",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1681492056,
+    "shopType": "specials",
+    "originalPrice": 1800,
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 1250
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/weapon_skin/eva/legendary_03.rpak",
+        "name": "Guardian of Atlantis",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_guardian_of_atlantis",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_wskin_eva_lgnd_03_ai50.png"
+  },
+  {
+    "title": "Firestarter",
+    "desc": "Skin",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1681492056,
+    "shopType": "specials",
+    "pricing": [
+      {
+        "ref": "Legend Tokens",
+        "quantity": 6500
+      },
+      {
+        "ref": "Apex Coins",
+        "quantity": 1250
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/weapon_skin/eva/shop_legendary_02.rpak",
+        "name": "Firestarter",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_firestarter",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_wskin_eva_lgnd_shop02_j9v9.png"
+  },
+  {
+    "title": "Hang In There",
+    "desc": "Holo",
+    "tag": "",
+    "purchaseLimit": 1,
+    "isAvailable": true,
+    "expireTimestamp": 1683047256,
+    "shopType": "shop",
+    "pricing": [
+      {
+        "ref": "Apex Coins",
+        "quantity": 500
+      }
+    ],
+    "content": [
+      {
+        "ref": "settings/itemflav/emote_icon/hanginthere/epic_v22_hanginthere_01.rpak",
+        "name": "Hang In There",
+        "quantity": 1
+      }
+    ],
+    "offerID": "230411_hang_in_there",
+    "asset": "https://shop-cdn.mozambiquehe.re/dl_store_s16_1_holo__epic_v22hanginthere01_4hi2.png"
+  }
+]

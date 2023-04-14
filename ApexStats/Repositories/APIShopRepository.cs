@@ -1,22 +1,22 @@
 ﻿using ApexStats.Model;
+using ApexStats.Repositories.Interfaces;
 using Newtonsoft.Json.Linq;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
-using System.Net.Http;
 
 namespace ApexStats.Repositories
 {
-    internal class MapRotationRepository
+    internal class APIShopRepository : IShopRepository
     {
-        public async Task<MapRotation> GetMapRotationAsync()
+
+        public async Task<List<ShopItem>> GetShopItemsAsync()
         {
-            string endpoint = $"https://api.mozambiquehe.re/maprotation";
+            string endpoint = $"https://api.mozambiquehe.re/store";
 
             using (HttpClient client = new HttpClient())
             {
@@ -29,7 +29,7 @@ namespace ApexStats.Repositories
                         throw new HttpRequestException(response.ReasonPhrase);
 
                     string json = await response.Content.ReadAsStringAsync();
-                    return JsonConvert.DeserializeObject<JObject>(json).SelectToken("current").ToObject<MapRotation>();
+                    return JsonConvert.DeserializeObject<List<ShopItem>>(json);
                 }
                 catch (Exception)
                 {
