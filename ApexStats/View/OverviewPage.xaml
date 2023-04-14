@@ -6,6 +6,7 @@
       xmlns:local="clr-namespace:ApexStats.View"
       xmlns:vm="clr-namespace:ApexStats.ViewModel"
       xmlns:cv="clr-namespace:ApexStats.View.Converters"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d" 
       d:DesignHeight="620" d:DesignWidth="805"
       Title="OverviewPage">
@@ -16,6 +17,13 @@
 
     <Page.Resources>
         <cv:SecondsToTimeConverter x:Key="SecondsToTimerConverter"/>
+        <cv:RefToImageConverter x:Key="RefToImageConverter"/>
+        <ObjectDataProvider x:Key="ShopSortCriteria" MethodName="GetValues"
+                            ObjectType="{x:Type sys:Enum}">
+            <ObjectDataProvider.MethodParameters>
+                <x:Type TypeName="vm:ShopSortCriteria"/>
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>
     </Page.Resources>
 
     <Grid>
@@ -114,9 +122,9 @@
                     <TextBlock Grid.Column="0" Grid.Row="1"
                                Text="Sort By :" Style="{StaticResource PrimaryTextStyle}"
                                VerticalAlignment="Center" Margin="4"/>
-                    <ComboBox Grid.Column="1" Grid.Row="1" Margin="4">
-
-                    </ComboBox>
+                    <ComboBox Grid.Column="1" Grid.Row="1" Margin="4"
+                              ItemsSource="{Binding Source={StaticResource ShopSortCriteria}}"
+                              SelectedItem="{Binding CurrentSortCriteria}"/>
 
                     <Button Grid.Column="0" Grid.Row="2"
                             Margin="4" Background="{StaticResource DarkSecondary}"
@@ -135,6 +143,7 @@
 
         <!-- SHOP -->
         <ListView Grid.Column="1" Grid.Row="0"
+                  x:Name="lvShop"
                   ItemsSource="{Binding ShopItems}"
                   Foreground="Transparent" Background="Transparent" BorderThickness="0"
                   ScrollViewer.VerticalScrollBarVisibility="Hidden"
@@ -160,12 +169,12 @@
                             BorderBrush="{StaticResource DarkSecondary}" BorderThickness="2" >
                         
                         <Grid>
-                            <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <StackPanel Orientation="Vertical">
                                 
                                 <Image Source="{Binding ImageURL}" Margin="8" Width="208" Height="250"/>
                                 <TextBlock Text="{Binding Title}" Style="{StaticResource SecondaryTextStyle}" Margin="8,0"/>
                                 <StackPanel Orientation="Horizontal" Margin="8,4,8,4">
-                                    <Image Source="pack://application:,,,/Resources/Images/Apex_Coins.png" Width="32" Height="32"/>
+                                    <Image Source="{Binding Pricing[0].Ref, Converter={StaticResource RefToImageConverter}}" Width="32" Height="32"/>
                                     <TextBlock Text="{Binding Pricing[0].Quantity}" Style="{StaticResource PrimaryTextStyle}"
                                                VerticalAlignment="Bottom" Margin="4,0"/>
                                 </StackPanel>

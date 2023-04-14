@@ -7,9 +7,22 @@ using System.Threading.Tasks;
 using System.Windows.Threading;
 using ApexStats.Repositories.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace ApexStats.ViewModel
 {
+    enum ShopSortCriteria
+    {
+        NameAsc,
+        NameDesc,
+        PriceAsc,
+        PriceDesc,
+        TokenAsc,
+        TokenDesc
+    }
+
     internal class OverviewVM : ObservableObject
     {
         // MAP ROTATION
@@ -32,15 +45,31 @@ namespace ApexStats.ViewModel
             set => SetProperty(ref _shopItems, value);
         }
 
+        private ShopSortCriteria _currentSortCriteria;
+        public ShopSortCriteria CurrentSortCriteria
+        { 
+            get => _currentSortCriteria;
+            set
+            {
+                SetProperty(ref _currentSortCriteria, value);
+                SortShop();
+            }
+        }
+
         // COMMANDS
         public RelayCommand RefreshMapRotationCommand { get; set; }
         public RelayCommand<RepositoryType> RefreshShopCommand { get; set; }
+        public RelayCommand SortShopCommand { get; set; }
 
         public OverviewVM()
         {
             // REFRESH SHOP
             RefreshShopCommand = new RelayCommand<RepositoryType>(async(param) => await RefreshShop(param));
             RefreshShopCommand.Execute(RepositoryType.Local);
+
+            // SORT SHOP
+            SortShopCommand = new RelayCommand(SortShop);
+            SortShopCommand.Execute(null);
 
             // REFRESH MAP ROTATION
             RefreshMapRotationCommand = new RelayCommand(async() => await RefreshMapRotation());
@@ -67,14 +96,40 @@ namespace ApexStats.ViewModel
                     ShopRepository = new LocalShopRepository();
                     break;
             }
-
-            ShopItems = await ShopRepository.GetShopItemsAsync();
+            ShopItems = await ShopRepository.GetShopItemsAsync();     
         }
 
         private async Task RefreshMapRotation()
         {
             if (CurrentMapRotation?.RemainingTime > 0) return;
             CurrentMapRotation = await RotationRepository.GetMapRotationAsync();
+        }
+
+        private void SortShop()
+        {
+            switch (CurrentSortCriteria)
+            {
+                case ShopSortCriteria.PriceAsc:
+                    ShopItems = ShopItems.OrderBy(item => item.Pricing.First().Quantity).ToList();
+                    break;
+                case ShopSortCriteria.PriceDesc:
+                    ShopItems = ShopItems.OrderByDescending(item => item.Pricing.First().Quantity).ToList();
+                    break;
+                case ShopSortCriteria.TokenAsc:
+                    ShopItems = ShopItems.OrderBy(item => item.Pricing.First().Ref)
+                                .ThenBy(item => item.Pricing.First().Quantity).ToList();
+                    break;
+                case ShopSortCriteria.TokenDesc:
+                    ShopItems = ShopItems.OrderBy(item => item.Pricing.First().Ref)
+                                .ThenByDescending(item => item.Pricing.First().Quantity).ToList();
+                    break;
+                case ShopSortCriteria.NameAsc:
+                    ShopItems = ShopItems.OrderBy(item => item.Title).ToList();
+                    break;
+                case ShopSortCriteria.NameDesc:
+                    ShopItems = ShopItems.OrderByDescending(item => item.Title).ToList();
+                    break;
+            }
         }
 
         private void Timer_Tick(object sender, EventArgs e)

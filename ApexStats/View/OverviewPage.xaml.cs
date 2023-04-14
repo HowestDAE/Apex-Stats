@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.ComponentModel;
 
 namespace ApexStats.View
 {
@@ -25,9 +26,35 @@ namespace ApexStats.View
             InitializeComponent();
         }
 
-        private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            CollectionView view = 
+                CollectionViewSource.GetDefaultView(lvShop.ItemsSource) as CollectionView;
 
+            view.SortDescriptions.Clear();
+
+            var selectedValue = ((sender as ComboBox).SelectedItem as ComboBoxItem).Content.ToString();
+
+            switch (selectedValue)
+            {
+                case "Price Asc.":
+                    view.SortDescriptions.Add(new SortDescription("Pricing[0].Quantity", ListSortDirection.Ascending));
+                    break;
+                case "Price Desc.":
+                    view.SortDescriptions.Add(new SortDescription("Pricing[0].Quantity", ListSortDirection.Descending));
+                    break;
+                case "Token Asc.":
+                    view.SortDescriptions.Add(new SortDescription("Pricing[0].Ref", ListSortDirection.Ascending));
+                    view.SortDescriptions.Add(new SortDescription("Pricing[0].Quantity", ListSortDirection.Ascending));
+                    break;
+                case "Token Desc.":
+                    view.SortDescriptions.Add(new SortDescription("Pricing[0].Ref", ListSortDirection.Ascending));
+                    view.SortDescriptions.Add(new SortDescription("Pricing[0].Quantity", ListSortDirection.Descending));
+                    break;
+                default:
+                    break;
+            }
+                
         }
     }
 }
